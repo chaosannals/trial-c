@@ -28,5 +28,20 @@ emsdk_env.bat
 emcc demo.c
 
 # 指定模板和带编译参数
-emcc -o demo/index.html main.c
+# -s WASM=1 指定生成 js 或 html (-o 文件是 html 时) 而不只是 wasm
+# -s FORCE_FILESYSTEM=1 
+emcc main.c -s WASM=1 -s FORCE_FILESYSTEM=1 -o demo/index.html
 ```
+
+#### 生成模块 dl
+
+次模块没有 main 主函数
+
+```bash
+# -s MAIN_MODULE=1 主模块
+# emcc side.c -s MAIN_MODULE=1
+
+# -s SIDE_MODULE=1 次模块
+emcc side.c -s SIDE_MODULE=1 -o side.wasm
+```
+
