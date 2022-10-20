@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.14)
+
+project(cmdemo LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+
+set(CMDEMO_LIBS_DIR "${PROJECT_SOURCE_DIR}/libs")
+set(CMDEMO_MSGPACK_C_DIR "${CMDEMO_LIBS_DIR}/msgpackc")
+set(CMDEMO_MSGPACK_C_INC_DIR "${CMDEMO_MSGPACK_C_DIR}/include/")
+set(CMDEMO_MSGPACK_C_OUT_INC_DIR "${PROJECT_BINARY_DIR}/libs/msgpackc/include")
+set(CMDEMO_MSGPACK_C_OUT_BIN_DIR "${PROJECT_BINARY_DIR}/libs/msgpackc/${CMAKE_CONFIGURATION_TYPES}")
+
+file(COPY ${CMDEMO_MSGPACK_C_INC_DIR} DESTINATION ${CMDEMO_MSGPACK_C_OUT_INC_DIR})
+
+message(STATUS "msgpack inc: ${CMDEMO_MSGPACK_C_INC_DIR} => ${CMDEMO_MSGPACK_C_OUT_INC_DIR} bin:${CMDEMO_MSGPACK_C_OUT_BIN_DIR}")
+
+add_subdirectory("libs/msgpackc")
+add_subdirectory(msgpackdemo)
