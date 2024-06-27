@@ -20,6 +20,16 @@
           "name": "ZMQ_BUILD_TESTS",
           "value": "False",
           "type": "BOOL"
+        },
+        {
+          "name": "WITH_LIBSODIUM_STATIC",
+          "value": "True",
+          "type": "BOOL"
+        },
+        {
+          "name": "BUILD_SHARED",
+          "value": "False",
+          "type": "BOOL"
         }
       ]
     }
