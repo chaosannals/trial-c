@@ -1,19 +1,19 @@
-#include <zmq.h>
+ï»¿#include <zmq.h>
 #include <string.h>
 #include <stdio.h>
 // #include <unistd.h>
 
 int main(void)
 {
-    printf("Connecting to hello world server¡­\n");
+    printf("Connecting to hello world serverâ€¦\n");
     void* context = zmq_ctx_new();
     void* requester = zmq_socket(context, ZMQ_REQ);
-    zmq_connect(requester, "tcp://localhost:5555");
+    zmq_connect(requester, "tcp://localhost:4444");
 
     int request_nbr;
     for (request_nbr = 0; request_nbr != 10; request_nbr++) {
         char buffer[10];
-        printf("Sending Hello %d¡­\n", request_nbr);
+        printf("Sending Hello %dâ€¦\n", request_nbr);
         zmq_send(requester, "Hello", 5, 0);
         zmq_recv(requester, buffer, 10, 0);
         printf("Received World %d\n", request_nbr);
